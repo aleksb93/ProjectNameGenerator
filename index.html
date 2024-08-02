@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project Name Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="data.js"></script>
+    <script>
+        function genCustomerId(input) {
+            // Compute hash
+            const hash = CryptoJS.MD5(input.toLowerCase()).toString(CryptoJS.enc.Hex);
+            // Extract first two bytes for id
+            const firstTwoBytesHex = hash.substring(0, 4);
+            // Convert to int
+            const firstTwoBytesInt = parseInt(firstTwoBytesHex, 16);
+            return firstTwoBytesInt;
+        }
+        // Generate random ascii character
+        function getRandomLetter() {
+            const asciiCode = Math.floor(Math.random() * 26) + 97;
+            return String.fromCharCode(asciiCode);
+        }
+    </script>
+</head>
+<body>
+    <div class="body-container">
+        <h1>Project Name Generator</h1>
+        <p>This creates a number from the customer name, and a random name.</p>
+        <p>Use the full name, but remove "AS", "AB", "Oy" etc. <br>
+        The customer nr is reproducable.</p>
+        <h2>Enter customer name:</h2>
+        <input type="text" id="customer_input" />
+        <button id="submit_customer">Submit</button>
+        <h2>Result</h2>
+        <p id="result_para">Waiting...</p>
+    </div>
+    <script>
+                // Add listener for input submit and generate result
+            document.getElementById("submit_customer").addEventListener("click", () => {
+                const cust_name = document.getElementById("customer_input").value.trim();
+                const cust_id = genCustomerId(cust_name);
+
+                const letter = getRandomLetter();
+
+                // Get only entries on random letter
+                const subset_adjectives = adjectives.filter(item => item.startsWith(letter));
+                const subset_nouns = nouns.filter(item => item.startsWith(letter));
+
+                // Create random index
+                const index_adj = Math.floor(Math.random() * subset_adjectives.length);
+                const index_nou = Math.floor(Math.random() * subset_nouns.length);
+
+                
+                const random_adj = subset_adjectives[index_adj];
+                let cap_random_adj = random_adj.charAt(0).toUpperCase() + random_adj.slice(1);
+                const random_nou = subset_nouns[index_nou];
+                let cap_random_nou = random_nou.charAt(0).toUpperCase() + random_nou.slice(1);
+
+                // Populate the result
+                result = document.getElementById("result_para");
+                result.innerText = `${cust_id} ${cap_random_adj} ${cap_random_nou}`;
+            });
+    </script>
+</body>
+</html>
