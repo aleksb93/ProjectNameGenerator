@@ -1,12 +1,16 @@
+.background {
+    background-color: #003232;
+}
 .body-container {
     margin: 0 auto;
     padding: 10px;
     max-width: 500px;
     width: 80vw;
-    max-height: 500;
+    height: 500;
     max-height: 80vh;
-    background-color: #003232;
-    box-shadow: 5px, 10px;
+    background-color: #003c06;
+    color:white;
+    box-shadow: 5px 10px;
     position: absolute;
     left: 50%;
     top: 50%;
