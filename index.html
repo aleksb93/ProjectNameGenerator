@@ -34,7 +34,7 @@
         <h2>Result</h2>
         <p id="result_para">Waiting...</p>
         <div class="footer">
-            <p>There are 26089 combinations of adjective + noun.</p>
+            <p>There are 54272 combinations of adjective + animal.</p>
         </div>
     </div>
     <script>
@@ -47,21 +47,25 @@
 
                 // Get only entries on random letter
                 const subset_adjectives = adjectives.filter(item => item.startsWith(letter));
-                const subset_nouns = nouns.filter(item => item.startsWith(letter));
+                //const subset_nouns = nouns.filter(item => item.startsWith(letter));
+                const subset_animals = animals.filter(item => item.startsWith(letter));
 
                 // Create random index
                 const index_adj = Math.floor(Math.random() * subset_adjectives.length);
-                const index_nou = Math.floor(Math.random() * subset_nouns.length);
+                //const index_nou = Math.floor(Math.random() * subset_nouns.length);
+                const index_ani = Math.floor(Math.random() * subset_animals.length);
 
                 
                 const random_adj = subset_adjectives[index_adj];
                 let cap_random_adj = random_adj.charAt(0).toUpperCase() + random_adj.slice(1);
-                const random_nou = subset_nouns[index_nou];
-                let cap_random_nou = random_nou.charAt(0).toUpperCase() + random_nou.slice(1);
+                //const random_nou = subset_nouns[index_nou];
+                //let cap_random_nou = random_nou.charAt(0).toUpperCase() + random_nou.slice(1);
+                const random_ani = subset_animals[index_ani];
+                let cap_random_ani = random_ani.charAt(0).toUpperCase() + random_ani.slice(1);
 
                 // Populate the result
                 result = document.getElementById("result_para");
-                result.innerText = `${cust_id} ${cap_random_adj} ${cap_random_nou}`;
+                result.innerText = `${cust_id} ${cap_random_adj} ${cap_random_ani}`;
             });
     </script>
 </body>
