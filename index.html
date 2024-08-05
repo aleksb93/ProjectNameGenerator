@@ -38,11 +38,8 @@
         </div>
     </div>
     <script>
-                // Add listener for input submit and generate result
-            document.getElementById("submit_customer").addEventListener("click", () => {
-                const cust_name = document.getElementById("customer_input").value.trim();
+            function createCompleteName(cust_name) {
                 const cust_id = genCustomerId(cust_name);
-
                 const letter = getRandomLetter();
 
                 // Get only entries on random letter
@@ -55,7 +52,7 @@
                 //const index_nou = Math.floor(Math.random() * subset_nouns.length);
                 const index_ani = Math.floor(Math.random() * subset_animals.length);
 
-                
+
                 const random_adj = subset_adjectives[index_adj];
                 let cap_random_adj = random_adj.charAt(0).toUpperCase() + random_adj.slice(1);
                 //const random_nou = subset_nouns[index_nou];
@@ -63,9 +60,27 @@
                 const random_ani = subset_animals[index_ani];
                 let cap_random_ani = random_ani.charAt(0).toUpperCase() + random_ani.slice(1);
 
+                // Return format name
+                return `${cust_id} ${cap_random_adj} ${cap_random_ani}`;
+            }
+
+                // Add listener for input submit and generate result
+            document.getElementById("submit_customer").addEventListener("click", () => {
+                const cust_name = document.getElementById("customer_input").value.trim();
+                prodj_name = createCompleteName(cust_name);
                 // Populate the result
                 result = document.getElementById("result_para");
-                result.innerText = `${cust_id} ${cap_random_adj} ${cap_random_ani}`;
+                result.innerText = prodj_name;
+            });
+            // Add event on enter key as well, duplicate data
+            document.getElementById("customer_input").addEventListener("keypress", function (e) {
+                if (e.key === "Enter") {
+                    const cust_name = document.getElementById("customer_input").value.trim();
+                    prodj_name = createCompleteName(cust_name);
+                    // Populate the result
+                    result = document.getElementById("result_para");
+                    result.innerText = prodj_name;
+                }
             });
     </script>
 </body>
