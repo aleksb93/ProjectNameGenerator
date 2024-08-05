@@ -1,9 +1,15 @@
 .body-container {
-    margin: 10px;
+    margin: 0 auto;
     padding: 10px;
     max-width: 500px;
     width: 80vw;
     max-height: 500;
     max-height: 80vh;
     background-color: #003232;
+    box-shadow: 5px, 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -250px;
 }
