@@ -7,7 +7,7 @@ body {
     padding: 10px;
     max-width: 600px;
     width: 80vw;
-    height: 300px;
+    height: 400px;
     max-height: 80vh;
     background-color: #003232;
     color: #DCFFDF;
@@ -15,7 +15,7 @@ body {
     left: 50%;
     top: 50%;
     margin-left: -250px;
-    margin-top: -150px;
+    margin-top: -450px;
 }
 h1, h2, h3 {
     color: #00DC69;
