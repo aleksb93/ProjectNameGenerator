@@ -13,7 +13,14 @@
             const firstTwoBytesHex = hash.substring(0, 4);
             // Convert to int
             const firstTwoBytesInt = parseInt(firstTwoBytesHex, 16);
-            return firstTwoBytesInt;
+            
+            // prepend zeros if less than 5 in lenght
+            let numberStr = firstTwoBytesInt.toString();
+            while (numberStr.length < 5) {
+                numberStr = '0' + numberStr;
+            }
+
+            return numberStr;
         }
         // Generate random ascii character
         function getRandomLetter() {
